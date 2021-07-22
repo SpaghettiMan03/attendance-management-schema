@@ -13,7 +13,7 @@ paths:
   /api/employees:
     get:
       tags:
-        - employee
+        - test
       summary: 従業員リストを取得
       description: 従業員リストを取得
       responses:
