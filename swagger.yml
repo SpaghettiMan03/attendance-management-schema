@@ -1,0 +1,71 @@
+
+openapi: 3.0.0
+
+info:
+  title: 勤怠管理API
+  version: 1.0.0
+
+servers:
+  - url: https://mitei.com
+    description: 本番API
+
+paths:
+  /api/employees:
+    get:
+      tags:
+        - employee
+      summary: 従業員リストを取得
+      description: 従業員リストを取得
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employees"
+
+components:
+  schemas:
+    Employees:
+      type: array
+      items:
+        $ref: "#/components/schemas/Employee"
+
+    Employee:
+      type: object
+      required:
+        - fullName
+        - gender
+        - birthday
+        - position
+      properties:
+        fullName:
+          type: string
+          example: '山田 太郎'
+          description: |
+            姓と名の間には半角スペースを設ける
+        gender:
+          type: string
+          example: 'MALE'
+          enum:
+            - MALE
+            - FEMALE
+            - NEITHER
+            - NOT_ANSWER
+          description: 性別
+        birthday:
+          type: string
+          format: date
+          example: '2000-10-10'
+          description: |
+            誕生日  
+            ISO 8601のYYYY-MM-DD形式
+        # TODO 相談しないとわからない
+        position:
+          type: string 
+          example: 'FULL_TIME'
+          enum:
+            - FULL_TIME
+            - PART_TIME
+          description: 役割
+  
