@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package pancake.baker;
+
+option go_package="gen/server";
+
+service EmployeeService {
+   rpc List(ListRequest) returns (ListResponse);
+}
+
+message Date {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
+message Employee {
+  enum Gender {
+    MALE       = 0;
+    FEMALE     = 1;
+    NEITHER    = 2;
+    NOT_ANSWER = 3;
+  }
+
+  enum Position {
+    FULL_TIME  = 0;
+    PART_TIME  = 1;
+  }
+
+  string   lastName  = 1;
+  string   firstName = 2;
+  Date     birthday  = 3;
+  Gender   gender    = 4;
+  Position position  = 5;
+}
+
+message ListRequest {}
+
+message ListResponse {
+  repeated Employee employees = 1;
+}
