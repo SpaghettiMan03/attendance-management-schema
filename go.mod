@@ -2,4 +2,4 @@ module attendance-management-swagger
 
 go 1.15
 
-require github.com/deepmap/oapi-codegen v1.8.1 // indirect
+require github.com/golang/protobuf v1.5.2 // indirect
