@@ -1,4 +1,4 @@
-module attendance-management-swagger
+module attendance-management-schema
 
 go 1.15
 
